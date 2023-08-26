@@ -1,0 +1,5 @@
+Able:Способный
+Absolutely:Абсолютно
+Accept:Принимать
+Acceptable:Допустимый
+Accepted:Принятый
