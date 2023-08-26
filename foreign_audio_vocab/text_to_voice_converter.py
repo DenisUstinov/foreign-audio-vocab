@@ -13,12 +13,14 @@ class TextToVoiceConverter:
     - delimiter (str): Разделитель между словом и переводом (по умолчанию ':').
     - langs (str): Языковые коды через разделитель (по умолчанию 'en:ru').
     - delay (int): Задержка между определениями в секундах (по умолчанию 1).
+    - audio_files (set): Набор созданных промежуточных аудио файлов (по умолчанию [])
     """
     def __init__(self, translations: List[str], delimiter: str = ':', langs: str = 'en:ru', delay: int = 1):
         self.translations = translations
         self.delimiter = delimiter
         self.langs = langs
         self.delay = delay
+        self.audio_files = []
 
         if not os.path.exists('tmp'):
             os.makedirs('tmp')
@@ -66,20 +68,17 @@ class TextToVoiceConverter:
         except Exception as e:
             print(f"Ошибка при создании пустого аудио: {e}")
 
-    def combine_audio_files(self, filenames: List[str], output_path: str) -> None:
+    def combine_audio_files(self) -> None:
         """
         Объединение аудиофайлов из списка в один большой файл с паузами.
-
-        Параметры:
-        - filenames (List[str]): Список путей к аудиофайлам для объединения.
-        - output_path (str): Путь для сохранения объединенного аудиофайла.
         """
+        output_path = 'combined_output.mp3'
         try:
             combined_audio = AudioSegment.silent(duration=0)
-            for filename in filenames:
+            for filename in self.audio_files:
                 audio = AudioSegment.from_mp3(filename)
                 combined_audio += audio
-                if filename != filenames[-1]:
+                if filename != self.audio_files[-1]:
                     delay_audio = AudioSegment.silent(duration=self.delay * 1000)
                     combined_audio += delay_audio
 
@@ -100,7 +99,6 @@ class TextToVoiceConverter:
         Обработка переводов и создание объединенных аудиофайлов.
         """
         self.remove_old_audio_files()
-        audio_files = []
 
         for idx, translation in enumerate(self.translations, start=1):
             words = translation.split(self.delimiter)
@@ -121,10 +119,7 @@ class TextToVoiceConverter:
             combined_output_path = os.path.join('tmp', f'{word1}_{word2}.mp3')
             self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
 
-            audio_files.append(combined_output_path)
+            self.audio_files.append(combined_output_path)
 
             os.remove(audio1_path)
             os.remove(audio2_path)
-
-        final_output_path = 'combined_output.mp3'
-        self.combine_audio_files(audio_files, final_output_path)

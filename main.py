@@ -24,6 +24,7 @@ if __name__ == "__main__":
 
     try:
         converter.process_translations()
+        converter.combine_audio_files()
         print("Обработка завершена.")
     except Exception as e:
         print(f"Произошла ошибка при обработке: {e}")
