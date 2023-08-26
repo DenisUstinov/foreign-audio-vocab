@@ -23,8 +23,8 @@ if __name__ == "__main__":
     converter = TextToVoiceConverter(translations, delimiter, langs, delay)
 
     try:
-        converter.process_translations()
-        converter.combine_audio_files()
+        converter.process_translations()  # Создание промежуточных аудиофайлов
+        converter.combine_audio_files()  # Создание конечного аудио файла
         print("Обработка завершена.")
     except Exception as e:
         print(f"Произошла ошибка при обработке: {e}")
