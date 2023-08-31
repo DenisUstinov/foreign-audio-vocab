@@ -118,7 +118,7 @@ class TextToVoiceConverter:
             self.create_silence_audio(self.delay, audio2_path)
             self.convert_to_audio(word2, lang2, audio2_path)
 
-            combined_output_path = os.path.join('tmp', f'{word1}_{word2}.mp3')
+            combined_output_path = os.path.join('tmp', f'{word1.replace(" ", "_")}.mp3')
             self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
 
             self.audio_files.append(combined_output_path)
