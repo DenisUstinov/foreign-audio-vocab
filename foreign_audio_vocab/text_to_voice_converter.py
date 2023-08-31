@@ -1,3 +1,5 @@
+import shutil
+
 from gtts import gTTS
 from pydub import AudioSegment
 import os
@@ -88,17 +90,17 @@ class TextToVoiceConverter:
 
     def remove_old_audio_files(self) -> None:
         """
-        Удаление старых аудиофайлов из папки tmp.
+        Удаление временных аудиофайлов tmp.
         """
-        old_audio_files = [f for f in os.listdir('tmp') if f.endswith('.mp3')]
-        for old_file in old_audio_files:
-            os.remove(os.path.join('tmp', old_file))
+        try:
+            shutil.rmtree('tmp')
+        except Exception as e:
+            print(f"Ошибка при удалении папки: {e}")
 
     def process_translations(self) -> None:
         """
         Обработка переводов и создание объединенных аудиофайлов.
         """
-        self.remove_old_audio_files()
 
         for idx, translation in enumerate(self.translations, start=1):
             words = translation.split(self.delimiter)
