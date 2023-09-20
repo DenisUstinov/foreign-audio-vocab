@@ -16,16 +16,19 @@ class TextToVoiceConverter:
     - langs (str): Языковые коды через разделитель (по умолчанию 'en:ru').
     - delay (int): Задержка между определениями в секундах (по умолчанию 1).
     - audio_files (set): Набор созданных промежуточных аудио файлов (по умолчанию [])
+    - tmp_dir (str): Директория для временных файлов (по умолчанию tmp)
     """
-    def __init__(self, translations: List[str], delimiter: str = ':', langs: str = 'en:ru', delay: int = 1):
+    def __init__(self, translations: List[str], delimiter: str = ':', langs: str = 'en:ru', delay: int = 1,
+                 tmp_dir: str = 'tmp'):
         self.translations = translations
         self.delimiter = delimiter
         self.langs = langs
         self.delay = delay
         self.audio_files = []
+        self.tmp_dir = tmp_dir
 
-        if not os.path.exists('tmp'):
-            os.makedirs('tmp')
+        if not os.path.exists(tmp_dir):
+            os.makedirs(self.tmp_dir)
 
     def convert_to_audio(self, text: str, lang: str, filename: str) -> None:
         """
@@ -56,20 +59,6 @@ class TextToVoiceConverter:
         except Exception as e:
             print(f"Ошибка при создании объединенного аудио: {e}")
 
-    def create_silence_audio(self, duration: int, output_path: str) -> None:
-        """
-        Создание пустого аудиофайла указанной длительности.
-
-        Параметры:
-        - duration (int): Длительность пустого аудиофайла в секундах.
-        - output_path (str): Путь для сохранения пустого аудиофайла.
-        """
-        try:
-            silence_audio = AudioSegment.silent(duration=duration * 1000)
-            silence_audio.export(output_path, format="mp3")
-        except Exception as e:
-            print(f"Ошибка при создании пустого аудио: {e}")
-
     def combine_audio_files(self) -> None:
         """
         Объединение аудиофайлов из списка в один большой файл с паузами.
@@ -93,7 +82,7 @@ class TextToVoiceConverter:
         Удаление временных аудиофайлов tmp.
         """
         try:
-            shutil.rmtree('tmp')
+            shutil.rmtree(self.tmp_dir)
         except Exception as e:
             print(f"Ошибка при удалении папки: {e}")
 
@@ -101,7 +90,6 @@ class TextToVoiceConverter:
         """
         Обработка переводов и создание объединенных аудиофайлов.
         """
-
         for idx, translation in enumerate(self.translations, start=1):
             words = translation.split(self.delimiter)
             if len(words) != 2:
@@ -109,24 +97,21 @@ class TextToVoiceConverter:
                 continue
 
             word1, word2 = words
-            lang1, lang2 = self.langs.split(self.delimiter)
 
-            audio1_path = os.path.join('tmp', 'temp_1.mp3')
-            audio2_path = os.path.join('tmp', 'temp_2.mp3')
-
-            self.convert_to_audio(word1, lang1, audio1_path)
-            self.create_silence_audio(self.delay, audio2_path)
-            self.convert_to_audio(word2, lang2, audio2_path)
-
-            combined_output_path = os.path.join('tmp', f'{word1.replace(" ", "_")}.mp3')
+            combined_output_path = os.path.join(self.tmp_dir, f'{word1.replace(" ", "_")}.mp3')
 
             # Проверяем, существует ли файл по указанному пути
             if os.path.isfile(combined_output_path):
                 print(f"Файл {combined_output_path} уже существует. Пропуск...")
             else:
-                # Создаем объединенный аудиофайл, только если его нет
-                self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
-                self.audio_files.append(combined_output_path)
+                audio1_path = os.path.join(self.tmp_dir, 'temp_1.mp3')
+                audio2_path = os.path.join(self.tmp_dir, 'temp_2.mp3')
 
-            os.remove(audio1_path)
-            os.remove(audio2_path)
+                lang1, lang2 = self.langs.split(self.delimiter)
+
+                self.convert_to_audio(word1, lang1, audio1_path)
+                self.convert_to_audio(word2, lang2, audio2_path)
+
+                self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
+
+            self.audio_files.append(combined_output_path)
