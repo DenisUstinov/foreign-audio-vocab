@@ -119,9 +119,14 @@ class TextToVoiceConverter:
             self.convert_to_audio(word2, lang2, audio2_path)
 
             combined_output_path = os.path.join('tmp', f'{word1.replace(" ", "_")}.mp3')
-            self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
 
-            self.audio_files.append(combined_output_path)
+            # Проверяем, существует ли файл по указанному пути
+            if os.path.isfile(combined_output_path):
+                print(f"Файл {combined_output_path} уже существует. Пропуск...")
+            else:
+                # Создаем объединенный аудиофайл, только если его нет
+                self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
+                self.audio_files.append(combined_output_path)
 
             os.remove(audio1_path)
             os.remove(audio2_path)
