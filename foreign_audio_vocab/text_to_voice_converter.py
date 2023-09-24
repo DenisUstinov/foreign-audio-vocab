@@ -1,5 +1,4 @@
 import shutil
-
 from gtts import gTTS
 from pydub import AudioSegment
 import os
@@ -8,16 +7,16 @@ from typing import List
 
 class TextToVoiceConverter:
     """
-    Класс для преобразования текстовых переводов в аудиофайлы.
+    Класс для конвертации текста в речь и создания аудиофайлов.
 
-    Параметры:
-    - translations (List[str]): Список переводов в формате 'слово:перевод'.
-    - delimiter (str): Разделитель между словом и переводом (по умолчанию ':').
-    - langs (str): Языковые коды через разделитель (по умолчанию 'en:ru').
-    - delay (int): Задержка между определениями в секундах (по умолчанию 1).
-    - audio_files (set): Набор созданных промежуточных аудио файлов (по умолчанию [])
-    - tmp_dir (str): Директория для временных файлов (по умолчанию tmp)
+    Args:
+        translations (List[str]): Список строк с переводами для обработки.
+        delimiter (str, optional): Разделитель между словами в переводах. По умолчанию ':'
+        langs (str, optional): Строка с языковыми кодами, разделенными двоеточием, например, 'en:ru'. По умолчанию 'en:ru'.
+        delay (int, optional): Задержка между аудиофайлами в миллисекундах. По умолчанию 1.
+        tmp_dir (str, optional): Путь к временной директории для сохранения временных файлов. По умолчанию 'tmp'.
     """
+
     def __init__(self, translations: List[str], delimiter: str = ':', langs: str = 'en:ru', delay: int = 1,
                  tmp_dir: str = 'tmp'):
         self.translations = translations
@@ -32,12 +31,15 @@ class TextToVoiceConverter:
 
     def convert_to_audio(self, text: str, lang: str, filename: str) -> None:
         """
-        Преобразование текста в аудио и сохранение в файл.
+        Преобразует текст в аудиофайл с заданным языком и сохраняет его.
 
-        Параметры:
-        - text (str): Текст для преобразования.
-        - lang (str): Языковой код.
-        - filename (str): Путь к файлу для сохранения аудио.
+        Args:
+            text (str): Текст для преобразования в речь.
+            lang (str): Языковой код для преобразования, например, 'en'.
+            filename (str): Путь для сохранения аудиофайла.
+
+        Returns:
+            None
         """
         try:
             tts = gTTS(text, lang=lang)
@@ -47,12 +49,15 @@ class TextToVoiceConverter:
 
     def create_combined_audio(self, audio1_path: str, audio2_path: str, output_path: str) -> None:
         """
-        Создание объединенного аудиофайла путем конкатенации двух аудиофайлов.
+        Объединяет два аудиофайла в один общий аудиофайл.
 
-        Параметры:
-        - audio1_path (str): Путь к первому аудиофайлу.
-        - audio2_path (str): Путь ко второму аудиофайлу.
-        - output_path (str): Путь для сохранения объединенного аудиофайла.
+        Args:
+            audio1_path (str): Путь к первому аудиофайлу.
+            audio2_path (str): Путь к второму аудиофайлу.
+            output_path (str): Путь для сохранения объединенного аудиофайла.
+
+        Returns:
+            None
         """
         try:
             os.system(f'ffmpeg -i {audio1_path} -i {audio2_path} -filter_complex "[0:a][1:a]concat=n=2:v=0:a=1[outa]" -map "[outa]" {output_path}')
@@ -61,7 +66,10 @@ class TextToVoiceConverter:
 
     def combine_audio_files(self) -> None:
         """
-        Объединение аудиофайлов из списка в один большой файл с паузами.
+        Объединяет все аудиофайлы из списка в один общий аудиофайл с заданными задержками.
+
+        Returns:
+            None
         """
         output_path = 'combined_output.mp3'
         try:
@@ -79,7 +87,10 @@ class TextToVoiceConverter:
 
     def remove_old_audio_files(self) -> None:
         """
-        Удаление временных аудиофайлов tmp.
+        Удаляет временные аудиофайлы и временную директорию.
+
+        Returns:
+            None
         """
         try:
             shutil.rmtree(self.tmp_dir)
@@ -88,7 +99,10 @@ class TextToVoiceConverter:
 
     def process_translations(self) -> None:
         """
-        Обработка переводов и создание объединенных аудиофайлов.
+        Обрабатывает переводы, создает аудиофайлы, объединяет их и удаляет временные файлы.
+
+        Returns:
+            None
         """
         for idx, translation in enumerate(self.translations, start=1):
             words = translation.split(self.delimiter)
@@ -113,5 +127,9 @@ class TextToVoiceConverter:
                 self.convert_to_audio(word2, lang2, audio2_path)
 
                 self.create_combined_audio(audio1_path, audio2_path, combined_output_path)
+
+                # Удаляем временные аудиофайлы после объединения
+                os.remove(audio1_path)
+                os.remove(audio2_path)
 
             self.audio_files.append(combined_output_path)
