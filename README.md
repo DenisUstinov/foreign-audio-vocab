@@ -2,6 +2,23 @@
 
 Проект `ForeignAudioVocab` представляет собой инструмент для создания аудиофайлов на основе текстовых переводов. Этот инструмент использует библиотеки gTTS (Google Text-to-Speech) и pydub для преобразования текста в речь и объединения аудиофайлов.
 
+## Вам нужно убедиться, что FFmpeg установлен на вашей системе.
+
+Если вы используете Linux, вы можете установить FFmpeg с помощью пакетного менеджера вашего дистрибутива. Например, на Ubuntu это можно сделать следующим образом:
+
+```bash
+sudo apt-get install ffmpeg
+````
+
+Если вы используете macOS, вы можете установить FFmpeg с помощью менеджера пакетов Homebrew:
+```bash
+brew install ffmpeg
+````
+
+Если вы работаете в среде Windows, вы можете загрузить предварительно собранный бинарный файл FFmpeg с официального сайта FFmpeg (https://www.ffmpeg.org/download.html) и установить его в соответствии с инструкциями.
+
+Убедитесь, что после установки FFmpeg, команда ffmpeg доступна из командной строки, и ваш код сможет успешно вызывать эту команду.
+
 ## Используйте в своих проектах
 
 Вы можете установить `ForeignAudioVocab` с помощью инструмента `pip` следующим образом:
@@ -9,6 +26,7 @@
 ```bash
 pip install git+https://github.com/DenisUstinov/foreign-audio-vocab.git --use-pep517
 ````
+
 ```python
 from foreign_audio_vocab.text_to_voice_converter import TextToVoiceConverter
 
@@ -41,6 +59,7 @@ if __name__ == "__main__":
         print("Обработка завершена.")
     except Exception as e:
         print(f"Произошла ошибка при обработке: {e}")
+
 
 ```
 
