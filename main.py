@@ -8,7 +8,7 @@ def read_file_lines(filename):
 
 
 if __name__ == "__main__":
-    # Замените 'p_translations.txt' на путь к вашему файлу с переводами
+    # Замените 'translations.txt' на путь к вашему файлу с переводами
     input_file = 'translations.txt'
 
     # Считываем переводы из файла
