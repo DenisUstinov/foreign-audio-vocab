@@ -25,7 +25,6 @@ age:возраст
 agile:гибкий
 agree:согласиться
 alert:оповещение
-algorithm:алгоритм
 algorithmic:алгоритмический
 alignment:выравнивание
 allocate:выделить
@@ -92,8 +91,6 @@ bind:связать
 binding:привязка
 black box:черный ящик
 blank:пустой
-block:блок
-blog:блог
 blue:синий
 body:тело
 boolean:логический
@@ -105,7 +102,6 @@ branch:ветвь
 brand:бренд
 break:разрыв
 broken:сломанный
-buffer:буфер
 build:сборка
 builder:строитель
 built:построенный
@@ -179,8 +175,6 @@ comprehensive:полный
 computational:вычислительный
 compute:вычислить
 computer based:компьютерный
-concatenate:конкатенировать
-concatenation:конкатенация
 concept:концепция
 concrete:конкретный
 concurrency:параллелизм
@@ -206,7 +200,6 @@ cooperative:совместный
 copy:копировать
 copying:копирование
 core:ядро
-corpus:корпус
 correct:правильный
 correspond:соответствовать
 cost:стоимость
@@ -409,7 +402,6 @@ format:формат
 found:найден
 fraction:доля
 frame:кадр
-framework:фреймворк
 free:освободить
 front end:клиентская часть
 function:функция
@@ -512,7 +504,6 @@ interact:взаимодействовать
 interactive:интерактивный
 intermediate:промежуточный
 interpretation:интерпретация
-interpreter:интерпретатор
 interrupt:прерывание
 intersection:пересечение
 interval:интервал
@@ -566,7 +557,6 @@ locate:определить местоположение
 location:местоположение
 lock:блокировка
 log:журнал
-logger:логгер
 logging:логирование
 logic:логика
 logical:логический
@@ -620,7 +610,6 @@ mode:режим
 model:модель
 modify:изменить
 modular:модульный
-module:модуль
 monitor:отслеживать
 monotonic:монотонный
 move:переместить
@@ -645,7 +634,6 @@ notification:уведомление
 notify:уведомить
 number:число
 object oriented:объектно ориентированный
-object:объект
 observe:наблюдать
 obtain:получить
 occur:происходить
@@ -688,7 +676,6 @@ parallel:параллельный
 parameter:параметр
 parent:родитель
 parse:разбор
-parser:парсер
 part:часть
 participant:участник
 passing:передача
@@ -831,7 +818,6 @@ replacement:замена
 reply:ответ
 report:отчет
 reporting:отчетность
-repository:репозиторий
 represent:представлять
 representation:представление
 reproduce:воспроизводить
@@ -883,7 +869,6 @@ sent:отправлено
 sequence:последовательность
 series:серия
 serve:обслуживать
-server:сервер
 service:служба
 set:установка
 setup:установка
@@ -952,7 +937,6 @@ symbol:символ
 symbolic:символический
 synchronization:синхронизация
 synchronous:синхронный
-syntax:синтаксис
 system:система
 tab:вкладка
 table:таблица
@@ -962,10 +946,7 @@ target:цель
 team:команда
 template:шаблон
 term:термин
-terminal:терминал
-test:тест
 testing:тестирование
-text:текст
 theme:тема
 thread:поток
 throw:бросить
