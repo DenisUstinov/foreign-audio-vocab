@@ -68,7 +68,7 @@ autofocus:автофокус
 automated:автоматизированный
 automation:автоматизация
 avoid:избежать
-back-end:серверная часть
+backend:серверная часть
 background:фон
 backing:поддержка
 backward:назад
@@ -90,7 +90,7 @@ big:большой
 binary:двоичный
 bind:связать
 binding:привязка
-black-box:черный ящик
+black box:черный ящик
 blank:пустой
 block:блок
 blog:блог
@@ -98,7 +98,7 @@ blue:синий
 body:тело
 boolean:логический
 border:граница
-bottom-up:снизу вверх
+bottom up:снизу вверх
 bound:связанный
 box:коробка
 branch:ветвь
@@ -110,7 +110,7 @@ build:сборка
 builder:строитель
 built:построенный
 bulletproof:защищенный от сбоев
-business-oriented:ориентированный на бизнес
+business oriented:ориентированный на бизнес
 but:но
 button:кнопка
 call:вызов
@@ -158,7 +158,7 @@ column:столбец
 combination:комбинация
 combinatorial:комбинаторный
 combine:объединить
-command-line:командной строки
+command line:командной строки
 command:команда
 comment:комментарий
 commit:фиксация изменений
@@ -178,7 +178,7 @@ component:компонент
 comprehensive:полный
 computational:вычислительный
 compute:вычислить
-computer-based:компьютерный
+computer based:компьютерный
 concatenate:конкатенировать
 concatenation:конкатенация
 concept:концепция
@@ -214,18 +214,17 @@ count:подсчитать
 counter:счетчик
 couple:пара
 coverage:охват
-cpu:процессор
 crash:авария
 create:создать
 creation:создание
-cross-functional:межфункциональный
+cross functional:межфункциональный
 custom:настраиваемый
 customer:клиент
 customizable:настраиваемый
-cutting-edge:передовой
-cyber:кибер-
+cutting edge:передовой
+cyber:кибер
 data structure:структура данных
-data-driven:основанный на данных
+data driven:основанный на данных
 database:база данных
 date:дата
 debug:отладка
@@ -265,7 +264,7 @@ describe:описать
 description:описание
 descriptive:описательный
 descriptor:дескриптор
-design-oriented:ориентированный на дизайн
+design oriented:ориентированный на дизайн
 design:дизайн
 destination:место назначения
 destroy:уничтожить
@@ -330,7 +329,7 @@ encode:кодировать
 encrypt:зашифровать
 encrypted:зашифрованный
 encryption:шифрование
-end-to-end:сквозной
+end to end:сквозной
 end:конец
 engine:двигатель
 enhance:улучшить
@@ -342,12 +341,12 @@ enumerate:перечислить
 environment:окружение
 equation:уравнение
 equivalent:эквивалент
-error-free:безошибочный
+error free:безошибочный
 error:ошибка
 escape:избежать
 evaluate:вычислить
 evaluation:оценка
-event-driven:событийно-ориентированный
+event driven:событийно ориентированный
 event:событие
 evolutionary:эволюционный
 exact:точный
@@ -382,8 +381,8 @@ failure:сбой
 fallback:запасной
 fast:быстрый
 faster:быстрее
-fault-tolerant:отказоустойчивый
-feature-rich:многофункциональный
+fault tolerant:отказоустойчивый
+feature rich:многофункциональный
 feature:особенность
 feedback:обратная связь
 fetch:извлечь
@@ -399,7 +398,7 @@ fix:исправить
 flag:флаг
 flatten:преобразовать в плоский вид
 flexible:гибкий
-flow-based:потоковый
+flow based:потоковый
 flow:поток
 flush:промывать
 fold:свернуть
@@ -412,12 +411,12 @@ fraction:доля
 frame:кадр
 framework:фреймворк
 free:освободить
-front-end:клиентская часть
+front end:клиентская часть
 function:функция
 functional:функциональный
 functionality:функциональность
 fundamental:фундаментальный
-future-proof:перспективный
+future proof:перспективный
 future:будущее
 garbage collection:сборщик мусора
 garbage:мусор
@@ -428,11 +427,9 @@ generation:поколение
 generator:генератор
 generic:универсальный
 get:получить
-git:система контроля версий git
 give:передать
 global:глобальный
 goal:цель
-gopher:гофер
 graph:граф
 graphical:графический
 group:группа
@@ -457,9 +454,9 @@ helper:помощник
 hexadecimal:шестнадцатеричный
 hidden:скрытый
 hide:скрыть
-high-performance:высокопроизводительный
+high performance:высокопроизводительный
 hold:удерживать
-human-readable:читаемый человеком
+human readable:читаемый человеком
 hybrid:гибридный
 icon:иконка
 idea:идея
@@ -513,7 +510,6 @@ integration test:интеграционное тестирование
 intelligent:интеллектуальный
 interact:взаимодействовать
 interactive:интерактивный
-interface:интерфейс
 intermediate:промежуточный
 interpretation:интерпретация
 interpreter:интерпретатор
@@ -540,7 +536,7 @@ key:ключ
 kind:вид
 label:метка
 language:язык
-large-scale:крупномасштабный
+large scale:крупномасштабный
 launch:запустить
 layout:макет
 leaf:лист
@@ -561,7 +557,6 @@ limit:ограничение
 line:строка
 link:ссылка
 linkedlist:связный список
-linux:линукс
 list:список
 listen:слушать
 listener:слушатель
@@ -606,7 +601,7 @@ meaningful:содержательный
 meant:предназначенный
 measure:измерить
 mechanism:механизм
-memory-efficient:эффективный по памяти
+memory efficient:эффективный по памяти
 memory:память
 mention:упомянуть
 merge:объединить
@@ -640,7 +635,7 @@ need:необходимость
 network:сеть
 networked:сетевой
 newer:новее
-next-generation:следующего поколения
+next generation:следующего поколения
 nil:нулевой
 node:узел
 notation:нотация
@@ -649,7 +644,7 @@ nothing:ничего
 notification:уведомление
 notify:уведомить
 number:число
-object-oriented:объектно-ориентированный
+object oriented:объектно ориентированный
 object:объект
 observe:наблюдать
 obtain:получить
@@ -921,7 +916,6 @@ specify:указать
 speed:скорость
 split:разделить
 square:квадрат
-stack:стек
 standard:стандарт
 start:начать
 startup:запуск
