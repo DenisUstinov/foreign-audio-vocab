@@ -940,7 +940,6 @@ subsequent:последующий
 subset:подмножество
 successive:последовательный
 sufficient:достаточный
-suffix:суффикс
 suggest:предложить
 suite:набор
 sum:сумма
